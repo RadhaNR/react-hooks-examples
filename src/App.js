@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={showHide}>Show/Hide</button><br />
-      {/* <React.Fragment>
+      <React.Fragment>
         UseState Example: <UseStateExample />
       </React.Fragment><hr />
       <React.Fragment>
@@ -32,7 +32,7 @@ function App() {
       </React.Fragment><hr/>
       <React.Fragment>
         Function - Props example: <FunctionProps name={'Radah'} age={age}/>
-      </React.Fragment> */}
+      </React.Fragment>
       <AppContext.Provider value={{name, setName}}>
         Use Context Example : 
         <UseContextExample />
