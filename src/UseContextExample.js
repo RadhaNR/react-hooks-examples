@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ContextConsumer2 from './context-consumer2';
-import { ThemeContext } from './create-context2';
+import ContextConsumer2 from './ContextConsumer2';
+import { ThemeContext } from './CreateContext2';
 
 const themes = {
     backgroundColor: 'black',

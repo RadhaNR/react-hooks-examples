@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer, useContext } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import UseStateExample from './usestate-example';
-import UseEffectExample from './use-effect-example';
-import FunctionProps from './function-props';
-import UseContextExample from "./use-context-example";
+import UseStateExample from './UseStateExample';
+import UseEffectExample from './UseEffectExample';
+import FunctionProps from './FunctionProps';
+import UseContextExample from "./UseContextExample";
+import { AppContext } from './CreateContext';
+import ContextConsumer2 from './ContextConsumer2';
+import ContextConsumer from './ContextConsumer';
 
+import CounterExample from './useReducer/counter-example/CounterExample';
 
-import { AppContext } from './create-context';
-import ContextConsumer2 from './context-consumer2';
-import ContextConsumer from './context-consumer';
+import ProductList from './ProductList';
+import CartList from './CartList';
+
+import { ProductContext } from './ProductContext';
+import { reducer, initialState } from './CartReducer';
+import { apiReducer } from './ApiReducer';
 
 function App() {
   const [show, setShow] = useState(false);
   const [age, setAge] = useState(0);
   const [name, setName] = useState('Testing Context');
+
+  const [list, dispatch] = useReducer(reducer, initialState);
+  const [apiRes, apiDispatch] = useReducer(apiReducer, initialState)
+  console.log(list);
 
   const showHide = () => {
     setShow(!show);
@@ -24,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={showHide}>Show/Hide</button><br />
-      <React.Fragment>
+      {/* <React.Fragment>
         UseState Example: <UseStateExample />
       </React.Fragment><hr />
       <React.Fragment>
@@ -37,18 +48,27 @@ function App() {
         Use Context Example : 
         <UseContextExample />
         <ContextConsumer />
-      </AppContext.Provider>
-      {/* <BrowserRouter>
-        <React.Fragment>
-          <Link to="/useState">UseStateExample | </Link>
-          <Link to="/useEffect">UseEffectExample</Link>
-        </React.Fragment>
-        <Switch>
-          <Route path="/" component={UseStateExample} exact/>
-          <Route path="/useState" component={UseStateExample} />
-          <Route path="/useEffect" render={()=> <UseEffectExample />} />
-        </Switch>
-      </BrowserRouter> */}
+      </AppContext.Provider> */}
+      <ProductContext.Provider value={{ list, dispatch }}>
+        <BrowserRouter>
+          <React.Fragment>
+            <Link to="/useState">UseStateExample | </Link>
+            <Link to="/useEffect">UseEffectExample | </Link>
+            <Link to="/useReducer">User Reducer Example | </Link>
+            <Link to="/productList">Product List | </Link>
+            <Link to="/cartList">Cart List({list.length})</Link>
+
+          </React.Fragment>
+          <Switch>
+            <Route path="/" component={UseStateExample} exact />
+            <Route path="/useState" component={UseStateExample} />
+            <Route path="/useEffect" render={() => <UseEffectExample />} />
+            <Route path="/useReducer" component={CounterExample} />
+            <Route path="/productList" component={ProductList} />
+            <Route path="/cartList" component={CartList} />
+          </Switch>
+        </BrowserRouter>
+      </ProductContext.Provider>
     </div>
   );
 }

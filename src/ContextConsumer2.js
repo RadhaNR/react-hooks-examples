@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { AppContext } from './create-context';
-import { ThemeContext } from './create-context2';
+import { AppContext } from './CreateContext';
+import { ThemeContext } from './CreateContext2';
 
 const ContextConsumer2 = () => {
     const { name, setName } = useContext(AppContext);
