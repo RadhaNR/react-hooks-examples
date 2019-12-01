@@ -19,6 +19,10 @@ import { reducer, initialState } from './CartReducer';
 import { apiReducer } from './ApiReducer';
 import UseReactMemo from './UseReactMemo';
 import UseMemo from './UseMemo';
+import UseRef from './UseRef';
+import UseForwardRef from './UseForwardRef';
+import UseLayoutEffect from './UseLayoutEffect';
+import CustomHookExample from './CustomHookExample';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -61,6 +65,10 @@ function App() {
             <Link to="/cartList">Cart List({list.length}) | </Link>
             <Link to="/useReactMemo">UseReactMemo | </Link>
             <Link to="/useMemo">UseMemo | </Link>
+            <Link to="/useRef">UseRef | </Link>
+            <Link to="/forwardRef">ForwardRef | </Link>
+            <Link to="/useLayoutEffect">UseLayoutEffect |</Link>
+            <Link to="/customHooks">CustomHookExample | </Link>
 
           </React.Fragment>
           <Switch>
@@ -72,6 +80,10 @@ function App() {
             <Route path="/cartList" component={CartList} />
             <Route path="/useReactMemo" component = {UseReactMemo} />
             <Route path="/useMemo" component={UseMemo}/>
+            <Route path="/useRef" component={UseRef}/>
+            <Route path="/forwardRef" component={UseForwardRef} />
+            <Route path="/useLayoutEffect" component={UseLayoutEffect} />
+            <Route path="/customHooks" component={CustomHookExample} />
           </Switch>
         </BrowserRouter>
       </ProductContext.Provider>
