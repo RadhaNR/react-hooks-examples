@@ -41,8 +41,6 @@ const UseReactMemo = () => {
             <Header />
             <hr />
             <Content age={age} contentGenerate={contentGenerate} /><br /><br />
-            <Calculation evenOdd={evenOdd} checkNum={checkNum}/>
-            <button onClick={setNumber}>Even/Odd</button>
             <hr />
             <Footer />
         </React.Fragment>

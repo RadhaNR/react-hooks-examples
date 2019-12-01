@@ -18,6 +18,7 @@ import { ProductContext } from './ProductContext';
 import { reducer, initialState } from './CartReducer';
 import { apiReducer } from './ApiReducer';
 import UseReactMemo from './UseReactMemo';
+import UseMemo from './UseMemo';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -58,7 +59,8 @@ function App() {
             <Link to="/useReducer">User Reducer Example | </Link>
             <Link to="/productList">Product List | </Link>
             <Link to="/cartList">Cart List({list.length}) | </Link>
-            <Link to="/useReactMemo">UseReactMemo</Link>
+            <Link to="/useReactMemo">UseReactMemo | </Link>
+            <Link to="/useMemo">UseMemo | </Link>
 
           </React.Fragment>
           <Switch>
@@ -69,6 +71,7 @@ function App() {
             <Route path="/productList" component={ProductList} />
             <Route path="/cartList" component={CartList} />
             <Route path="/useReactMemo" component = {UseReactMemo} />
+            <Route path="/useMemo" component={UseMemo}/>
           </Switch>
         </BrowserRouter>
       </ProductContext.Provider>
